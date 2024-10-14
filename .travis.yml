@@ -1,0 +1,19 @@
+language: php
+
+php:
+  - 7.4
+
+services:
+  - mysql
+
+before_script:
+  - cp .env.dist .env
+  - composer install
+  - php bin/console doctrine:database:create --env=test
+  - php bin/console doctrine:schema:create --env=test
+
+script:
+  - vendor/bin/simple-phpunit
+
+notifications:
+  email: false
