@@ -20,6 +20,7 @@ services:
             - '../src/Entity/'
             - '../src/Kernel.php'
     App\Controller\DatabaseController:
+        tags: ['controller.service_arguments']
         autowire: true
         calls:
             - method: setConnection
